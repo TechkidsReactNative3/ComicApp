@@ -14,7 +14,7 @@
         },
         {
             "id": 16,
-            "title": "LOK Comic #7 - Chất béo (P.1)",
+            "title": "LOK Comic #7 - Chất béo (P.1)LOK Comic #7 - Chất béo (P.1)",
             "photos": [
                 "https://api.techkids.vn/reactnative/media/comic/lokcomic7-chatbeop1/02.jpg",
 				"https://api.techkids.vn/reactnative/media/comic/lokcomic7-chatbeop1/03.jpg",
@@ -26,7 +26,7 @@
         {
             "id": 17,
             "title": "LOK Comic #8: Kháng Sinh",
-            "photo": [
+            "photos": [
                 "https://api.techkids.vn/reactnative/media/comic/abcd/101.png",
 				"https://api.techkids.vn/reactnative/media/comic/abcd/102.png",
 				"https://api.techkids.vn/reactnative/media/comic/abcd/103.png",
@@ -37,8 +37,8 @@
         },
         {
             "id": 18,
-            "title": "LOK Comic #4 - Bệnh Ung Thư (Cancer)",
-            "photo": [
+            "title": "LOK Comic #4 - Bệnh Ung Thư (Cancer)LOK Comic #4 - Bệnh Ung Thư (Cancer)",
+            "photos": [
                 "https://api.techkids.vn/reactnative/media/comic/lokcomic4-benhungthucancer/cancer-01.png",
 				"https://api.techkids.vn/reactnative/media/comic/lokcomic4-benhungthucancer/cancer-02.png",
 				"https://api.techkids.vn/reactnative/media/comic/lokcomic4-benhungthucancer/cancer-03.png",

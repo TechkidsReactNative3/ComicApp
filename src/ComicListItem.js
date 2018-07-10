@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View,
+  TouchableOpacity,
   Image,
   StyleSheet,
   Dimensions
@@ -12,12 +12,16 @@ class ComicListItem extends Component {
   render() {
     console.log('hihihih')
     return (
-      <View style={styles.container}>
+      <TouchableOpacity style={styles.container}>
         <Image
           style={styles.image}
-          source={{ uri: 'https://api.techkids.vn/reactnative/media/comic/lokcomic1giaingochungkhoanp1/Copy_of_1.jpg' }} />
-        <Text style={styles.text}>LOK Comic #1: Giải ngố chứng khoán (P.1)</Text>
-      </View>
+          source={{ uri: this.props.comic.photos[0] }} />
+        <Text
+          style={styles.text}
+          numberOfLines={2}
+          >{this.props.comic.title}
+        </Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -27,7 +31,8 @@ class ComicListItem extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 250,
-    width: Dimensions.get('window').width / 2
+    width: Dimensions.get('window').width / 2,
+    padding: 5
   },
   image: {
     height: 200
