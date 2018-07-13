@@ -10,9 +10,11 @@ import ComicListItem from './ComicListItem';
 class ComicListScreen extends Component {
   state = {}
 
-  renderItem = ({item}) => <ComicListItem comic={item} />
+  renderItem = ({item}) => <ComicListItem 
+    comic={item}
+    navigation={this.props.navigation} />
 
-  keyExtractor = (item, index) => item.id
+  keyExtractor = (item) => item.id
 
   render() {
     Orientation.lockToPortrait()

@@ -10,16 +10,17 @@ import {
 class ComicListItem extends Component {
   state = {}
   render() {
-    console.log('hihihih')
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.container}
+        onPress={() => this.props.navigation.navigate('ComicDetail',
+          { comic: this.props.comic })}>
         <Image
           style={styles.image}
           source={{ uri: this.props.comic.photos[0] }} />
         <Text
           style={styles.text}
           numberOfLines={2}
-          >{this.props.comic.title}
+        >{this.props.comic.title}
         </Text>
       </TouchableOpacity>
     );
