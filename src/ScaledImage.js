@@ -10,7 +10,6 @@ class ScaledImage extends Component {
 
   componentDidMount() {
     console.log('componentDidMount')
-    
   }
 
   componentWillMount() {
