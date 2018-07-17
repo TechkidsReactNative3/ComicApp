@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  FlatList, Image
+  FlatList, Image, Dimensions
 } from 'react-native';
+import ScaledImage from './ScaledImage';
 
 class ComicDetail extends Component {
   state = {}
@@ -11,9 +12,10 @@ class ComicDetail extends Component {
     return (
       <FlatList
         data={this.props.navigation.state.params.comic.photos}
-        renderItem={({ item }) => <Image
-          style={{height: 200}}
-          source={{ uri: item }} />}
+        renderItem={({ item }) => <ScaledImage
+          uri = {item}
+          width = {Dimensions.get('window').width}
+        />}
         keyExtractor={(item) => item}
       />
     );
