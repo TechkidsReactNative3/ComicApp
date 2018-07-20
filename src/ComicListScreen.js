@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  FlatList, View
+  FlatList, View, ActivityIndicator
 } from 'react-native';
 import Orientation from 'react-native-orientation';
 import axios from 'axios'
@@ -11,20 +11,28 @@ import ComicListItem from './ComicListItem';
 
 class ComicListScreen extends Component {
   state = {
-    data: []
+    data: [],
+    loading: true
   }
 
   componentDidMount() {
     axios.get('https://api.techkids.vn/reactnative/api/comics')
-      .then(res => this.setState({data: res.data.comics}))
+      .then(res => this.setState({ data: res.data.comics, loading: false }))
   }
 
   loadComicByCategory = (category) => {
-    axios.get(`https://api.techkids.vn/reactnative/api/comics?category=${category}`)
-      .then(res => this.setState({data: res.data.comics.comics}))
+    this.setState({ loading: true })
+    category === 'Tất cả'
+      ? axios.get('https://api.techkids.vn/reactnative/api/comics')
+        .then(res => this.setState({ data: res.data.comics, loading: false }))
+      : axios.get(`https://api.techkids.vn/reactnative/api/comics?category=${category}`)
+        .then(res => {
+          this.setState({ data: res.data.comics.comics, loading: false })
+          console.log(`dataaaaa`)
+        })
   }
 
-  renderItem = ({item}) => <ComicListItem 
+  renderItem = ({ item }) => <ComicListItem
     comic={item}
     navigation={this.props.navigation} />
 
@@ -34,11 +42,11 @@ class ComicListScreen extends Component {
     Orientation.lockToPortrait()
 
     const categories = [
-      {key: 0, label: 'Tất cả'},
-      {key: 1, label: 'Con người - Tâm lý học - Hành vi'},
-      {key: 2, label: 'Kinh tế - Chính trị'},
-      {key: 3, label: 'Sức khoẻ'},
-      {key: 4, label: 'Văn hoá - Lịch sử - Xã hội'},
+      { key: 0, label: 'Tất cả' },
+      { key: 1, label: 'Con người - Tâm lý học - Hành vi' },
+      { key: 2, label: 'Kinh tế - Chính trị' },
+      { key: 3, label: 'Sức khoẻ' },
+      { key: 4, label: 'Văn hoá - Lịch sử - Xã hội' },
     ]
 
     return (
@@ -48,12 +56,18 @@ class ComicListScreen extends Component {
           initValue='Tất cả'
           onChange={(option) => this.loadComicByCategory(option.label)}
         />
-        <FlatList
-        data={this.state.data}
-        renderItem={this.renderItem}
-        numColumns='2'
-        keyExtractor={this.keyExtractor}
-      />
+        <View>
+          {this.state.loading === false ? (
+            <FlatList
+              data={this.state.data}
+              renderItem={this.renderItem}
+              numColumns='2'
+              keyExtractor={this.keyExtractor}
+            />
+          ) : (
+              <ActivityIndicator />
+            )}
+        </View>
       </View>
     );
   }
